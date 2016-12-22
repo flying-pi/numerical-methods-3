@@ -45,3 +45,8 @@ kombinationMetod fun dfun ddfun a b e
             b - (fun b)*((b-newA)/((fun b)-(fun newA)))
         else
             b - (fun b)/(dfun b)
+
+
+approximationMethod  :: (Double -> Double) -> (Double -> Double) -> Double -> Double -> Double
+approximationMethod fun dfun x e = if (e > (abs (x-newX))) then newX  else  approximationMethod fun dfun newX e
+    where newX = x - (fun x)/(dfun x)

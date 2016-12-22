@@ -10,7 +10,8 @@ import MyMathUtil
 enablePinkColor  =  color3f 0.349019607843137 0.094117647058824 0.47843137254902
 
 func ::  Double -> Double
-func x = x*x + 2*(log (x+1)) - 4
+func x = x*x + 2*(log (x+1))
+-- func x = x*x + 2*(log (x+1)) - 4
 
 dFunc ::  Double -> Double
 dFunc x = 2*x + 2/(x+1)
@@ -19,10 +20,12 @@ d_2Func ::  Double -> Double
 d_2Func x = 2 - 2/((x+1)*(x+1))
 
 
-from  = 1
-to = 2
+from  = -0.5
+-- from  = 1
+to = 0.5
+-- to = 2
 e = 0.0001
-roundMax = 5
+roundMax = 3
 
 
 main :: IO ()
@@ -33,6 +36,7 @@ main = do
         _ -> putStrLn "can not get result"
     putStrLn ("method hord :: \t\t\t"++ (show (roundFloat (hordMethod func from to e) roundMax)))
     putStrLn ("method of combinations :: \t"++ (show (roundFloat (kombinationMetod func  dFunc d_2Func from to e) roundMax)))
+    putStrLn ("method of approximation :: \t"++ (show (roundFloat (approximationMethod func  dFunc from e) roundMax)))
     (_progName, _args) <- getArgsAndInitialize
     _window <- createWindow "lab #3"
     displayCallback $= display
